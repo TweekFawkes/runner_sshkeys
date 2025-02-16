@@ -1,0 +1,15 @@
+runner:
+  name: SSH Key Generator
+  description: To generate SSH keys non-interactively in a single command via the  OpenSSH client (which includes ssh-keygen).
+  version: 0.0.1
+
+build:
+  commands: |
+    echo "START: Building SSH Key"
+    apt-get update
+    apt-get install -y openssh-client
+    echo "END: Building SSH Key"
+
+launch:
+  type: binary
+  command: ssh-keygen -t ed25519 -f outputs/id_ed25519.pem -N ''
