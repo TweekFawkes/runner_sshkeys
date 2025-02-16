@@ -11,10 +11,10 @@ build:
     echo "END: Building SSH Key"
 
 webform:
-  - name: name_of_key
-    prompt: Name of the Key
+  - name: type_of_key
+    prompt: Key Type (e.g. ed25519, ecdsa)
     type: text
 
 launch:
   type: binary
-  command: ssh-keygen -t ed25519 -f outputs/id_ed25519_${name_of_key}.pem -N ''
+  command: ssh-keygen -t ${type_of_key} -f outputs/private_key.pem -N '' && mv outputs/private_key.pem.pub outputs/public_key.pub
